@@ -35,6 +35,12 @@ router.post('/stripe-information', function (req, res, next) {
 	res.send("Stripe token received")
 })
 
+// currently adding NGROK HTTPS routing for VGS integration
+// NGROK server is running but not responding on https://Localhost:8000
+
+
+
+
 // router.post('/stripe-information', function (req, res, next) {
 // 	console.log('stripe information received: ', req.body)
 // 	stripe.customers.create({
