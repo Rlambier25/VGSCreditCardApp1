@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
-const stripe = require('stripe')('sk_test_51Hkj56A2bWvJWEsXgpPlTRjNND8r9EUUHcQ7ONwU1PNXIWXotWAwDwTELo08TR3QY3fTeXqBBabUVOFktnHQye5P00E7oNHuAw');
+const stripe = require('stripe')('pk_test_51Hkj56A2bWvJWEsXlhYHWU09EFS1q9l27ca0zMnPIBlcNCs5DLdMEusmZ9Q9V5K64VuCE09slaU0LsBP9eRr2EoQ00fZ3zv1QK');
 const app = express();
 
 
@@ -33,25 +33,18 @@ router.get('/stripe-form', function (req,res,next) {
 })
 
 router.post('/stripe-information', function (req, res, next) {
-	console.log('Stripe token received: ', req.body)
-	res.send("Stripe token received")
-})
+  console.log('stripe information received: ', req.body);
 
-// currently adding NGROK HTTPS routing for VGS integration
-// NGROK server is running but not responding on https://Localhost:8000
-
-router.post('/stripe-information', function (req, res, next) {
-	console.log('stripe information received: ', req.body)
-	stripe.customers.create({
-		description: 'My new customer',
-		source: req.body.stripeToken,
-	}, function(err, customer) {
-		console.log('err: ', err, '|customer: ', customer)
-		if (err) {
-			res.json(err)
-			return
-		}
-		res.json(customer)
-		return
-	})
+  stripe.customers.create({
+    description: 'My new customer',
+    source: req.body.stripeToken,
+  }, function(err, customer) {
+    console.log('err: ', err, '|customer: ', customer)
+    if (err) {
+      res.json(err)
+      return
+    }
+    res.json(customer)
+    return
+  })
 })
