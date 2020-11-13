@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
-const stripe = require('stripe')('pk_test_51Hkj56A2bWvJWEsXlhYHWU09EFS1q9l27ca0zMnPIBlcNCs5DLdMEusmZ9Q9V5K64VuCE09slaU0LsBP9eRr2EoQ00fZ3zv1QK');
+const stripe = require('stripe')('sk_test_51Hkj56A2bWvJWEsXgpPlTRjNND8r9EUUHcQ7ONwU1PNXIWXotWAwDwTELo08TR3QY3fTeXqBBabUVOFktnHQye5P00E7oNHuAw');
 const app = express();
 
 
